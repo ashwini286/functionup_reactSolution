@@ -22,7 +22,15 @@ import React, { useEffect, useState } from 'react'
         alt='load image'
         style={{ height: "400px" }}
       />
-      <button onClick={getDogData}>Click me</button>
+      <button onClick={getDogData}  style={{
+              padding: "20px",
+              margin: "20px",
+              backgroundColor: "blueviolet",
+              borderRadius:"6px",
+              border:"none",
+              color:"white",
+              textTransform: "uppercase" }}
+            >Click me</button>
     </div>
   );
 
