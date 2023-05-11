@@ -1,12 +1,12 @@
 import './App.css';
+import Tactoe from './Componante/Tac-ToeGame/Tactoe';
 
-import Card from './Componante/Atoms/Card';
 function App() {
   
   return (
     <div>
      <header>
-  <Card />
+  <Tactoe />
   
      </header>
     </div>
