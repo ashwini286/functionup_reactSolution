@@ -43,15 +43,15 @@ function Todo() {
     const [tasksRemaining, setTasksRemaining] = useState(0);
     const [tasks, setTasks] = useState([
         {
-            title: "Complete your Assignment",
+            title: "Do WorkOut",
             completed: true
         },
         {
-            title: "Check E-mails",
+            title: "Check Your task",
             completed: true
         },
         {
-            title: "Hangout with friends",
+            title: "Enjoy with Friends",
             completed: false
         }
     ]);
@@ -79,6 +79,7 @@ function Todo() {
     return (
         <div className="todo-container">
             <div className="header">Pending tasks ({tasksRemaining})</div>
+
             <div className="tasks">
                 {tasks.map((task, index) => (
                     <Task
