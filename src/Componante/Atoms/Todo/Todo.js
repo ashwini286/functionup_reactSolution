@@ -1,36 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Todo.css';
 
 
-function Task({ task, index, completeTask, removeTask }) {
+function UserNmae({ task, index,  removeUser}) {
     return (
-        <div
-            className="task"
-            style={{ textDecoration: task.completed ? "line-through" : "" }}
-        >
-            {task.title}
-
-            <button style={{ background: "red" }} onClick={() => removeTask(index)}>x</button>
-            <button onClick={() => completeTask(index)}>Complete</button>
-
-        </div>
+        <div className="user">
+            {task.name}
+            <button style={{ background: "red" }} onClick={() => removeUser(index)}>Delete</button>
+            </div>
     );
 }
 
-function CreateTask({ addTask }) {
+function CreateUser({ addUser }) {
     const [value, setValue] = useState("");
 
     const handleSubmit = e => {
         e.preventDefault();
         if (!value) return;
-        addTask(value);
+        addUser(value);
         setValue("");
     }
     return (
         <form onSubmit={handleSubmit}>
             <input
                 type="text"
-                className="input"
                 value={value}
                 placeholder="Add a task"
                 onChange={e => setValue(e.target.value)}
@@ -39,63 +32,54 @@ function CreateTask({ addTask }) {
     );
 }
 
-function Todo() {
-    const [tasksRemaining, setTasksRemaining] = useState(0);
-    const [tasks, setTasks] = useState([
+function User() {
+   
+    const [users, setUser] = useState([
         {
-            title: "Do WorkOut",
-            completed: true
+            name: "ram",
+          
         },
         {
-            title: "Check Your task",
-            completed: true
+            name: "shyam",
+          
         },
         {
-            title: "Enjoy with Friends",
-            completed: false
+            name: "mohan",
+           
         }
     ]);
 
-    useEffect(() => { setTasksRemaining(tasks.filter(task => !task.completed).length) }, [tasks]);
-
-
-    const addTask = title => {
-        const newTasks = [...tasks, { title, completed: false }];
-        setTasks(newTasks);
+   
+    const addUser = name => {
+        const newUser = [...users, { name }];
+        setUser(newUser);
     };
 
-    const completeTask = index => {
-        const newTasks = [...tasks];
-        newTasks[index].completed = true;
-        setTasks(newTasks);
-    };
-
-    const removeTask = index => {
-        const newTasks = [...tasks];
-        newTasks.splice(index, 1);
-        setTasks(newTasks);
+    const removeUser = index => {
+        const newUsers = [...users];
+        newUsers.splice(index, 1);
+        setUser(newUsers);
     };
 
     return (
-        <div className="todo-container">
-            <div className="header">Pending tasks ({tasksRemaining})</div>
+        <div className="User-container">
+           
 
-            <div className="tasks">
-                {tasks.map((task, index) => (
-                    <Task
+            <div className="user">
+                {users.map((task, index) => (
+                    <UserNmae
                     task={task}
                     index={index}
-                    completeTask={completeTask}
-                    removeTask={removeTask}
+                    removeUser={removeUser}
                     key={index}
                     />
                 ))}
             </div>
-            <div className="create-task" >
-                <CreateTask addTask={addTask} />
+            <div className="create-user" >
+                <CreateUser addUser={addUser} />
             </div>
         </div>
     );
 }
 
-export default Todo;
+export default User;
