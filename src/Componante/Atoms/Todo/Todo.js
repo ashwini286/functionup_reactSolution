@@ -25,7 +25,7 @@ function CreateUser({ addUser }) {
             <input
                 type="text"
                 value={value}
-                placeholder="Add a task"
+                placeholder="Add a User"
                 onChange={e => setValue(e.target.value)}
             />
         </form>
